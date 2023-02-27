@@ -74,7 +74,7 @@ Per tunare i parametri uso come metrica la sensitivity perché preferisco capire
 Tutti i modelli sono stati fittati con la funzione train di caret ad eccezione dello stacking.
 Riporto solo i risultati ottenuti dai vari modelli che ho implementato.
 
-1)	Logistico
+# **Logistico**
 
 Preprocess: variabili non collineari, near zero variance e model selection
 
@@ -84,6 +84,74 @@ Preprocess: variabili non collineari, near zero variance e model selection
 
 
 ![image](https://user-images.githubusercontent.com/85078090/221672293-6ab98fc1-c290-49e0-920a-01a8263895a8.png)
+
+# **Knn**  
+
+Preprocess: variabili non collineari, near zero variance, model selection, variabili standardizzate e variabili fattoriali rese continue. 
+Come parametro di tuning abbiamo K = 23 (il numro di vicini), tunato dal modello. 
+
+![image](https://user-images.githubusercontent.com/85078090/221676347-f1d23a36-c8b0-4162-b652-b17986997c6c.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221676535-ad96147d-d68b-40c2-8e05-e24d4758d172.png)
+![image](https://user-images.githubusercontent.com/85078090/221676590-8e09f990-fcbc-4228-b87a-f17baad4c481.png)
+
+# **Gradient boosting**
+
+Parametro di tuning: numero di alberi (500) 
+![image](https://user-images.githubusercontent.com/85078090/221676835-8497a7f7-bbf3-4287-a123-189313685b4e.png)
+![image](https://user-images.githubusercontent.com/85078090/221676854-57316258-fe82-42b3-b678-82e1477a8c3f.png)
+![image](https://user-images.githubusercontent.com/85078090/221676891-5fd5db77-1629-4894-9ad4-0e799f03e889.png)
+
+# **Random forest**
+
+Parametro di tuning: numero di features considerato ad ogni split (7)
+
+![image](https://user-images.githubusercontent.com/85078090/221676998-fa281f0d-d767-4852-8359-43664d86bcd5.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221677018-c2f805a5-0bb6-467b-bc17-11d32daaedd0.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221677053-163fbc2f-aa26-4361-90c9-d5d0213b931b.png)
+
+# **Rete neurale**
+
+Parametri da tunare: numero di strati (5) e decay (0.1)
+Preprocess: variabili standardizzate, non collineari e near zero variance
+
+![image](https://user-images.githubusercontent.com/85078090/221677161-27a38bde-8c43-47b6-b069-09ce062edfa6.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221677174-9ca8432d-ffe0-46e3-a095-cf68647e7f2d.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221677193-ac81278e-1b9d-4d3d-8884-c7c1f38e9f94.png)
+
+# **Stacking – glm**
+
+Modelli usati: logistico, albero, knn, sda (shrinkage discriminant analysis), lasso, pls, naive bayes, gradient boosting, random forest, reti neurali, bagging. 
+Metamodello logistico di coefficienti: 	
+
+![image](https://user-images.githubusercontent.com/85078090/221677386-316c1772-7791-43f6-aef7-d6d473512e1a.png)
+
+![image](https://user-images.githubusercontent.com/85078090/221677415-d9617235-3321-4097-9b72-a02212595eb7.png)
+
+Per confrontare i vari modelli non possiamo basarci su quello che va a massimizzare l’accuracy perché l’accuratezza dipende dalla soglia con cui decidiamo di classificare e di conseguenza non è un metodo robusto. Bisogna confrontare i modelli per tutte le possibili soglie. 
+Grafico delle curve ROC:
+
+![image](https://user-images.githubusercontent.com/85078090/221677480-398c66ca-fc4c-4680-a540-06166d026d58.png)
+
+Dal grafico delle curve ROC si può notare che il knn e la random forest sono i due metodi che forniscono i modelli classificativi peggiori. Mentre le curve migliori son quelle del gradient boosting, rete neurali e stacking. Queste tre curve però si sovrappongono ed è difficile valutare quale sia effettivamente la migliore. Ha senso allora andare a studiare le curve lift di questi tre modelli. Per ogni percentuale della popolazione (asse delle x) mi restituisce la percentuale cumulata di non trasportati catturata (ovvero i classificati in modo corretto).
+
+Gradient boosting: 
+
+![image](https://user-images.githubusercontent.com/85078090/221677907-8028672b-b0aa-499c-bd90-e261300f0b05.png)
+
+Neural network: 
+
+![image](https://user-images.githubusercontent.com/85078090/221677954-4923052f-91ef-4054-9e41-41b7f70866a6.png)
+
+Staking – glm:
+
+![image](https://user-images.githubusercontent.com/85078090/221677999-2d051f89-e144-44f0-b63e-d8886586f8bc.png)
+
+Ho selezionato come modello lo stacking essendo quello in grado di catturare il maggior numero di non trasportati (60,5%) considerando solo il 30% della popolazione. 
 
 
 
