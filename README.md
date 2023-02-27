@@ -58,10 +58,10 @@ Ciò significa che ho fatto imputazione utilizzando l’albero ovvero il mio mod
 Prima di iniziare a costruire un modello è importante lavorare sulla complessità dei dati. Il modo più semplice e veloce per ridurre la dimensionalità è quello di effettuare model selection.
 
 Boruta in pochi passaggi:
-1)	crea una copia del dataset iniziale
-2)	va a permutare le osservazioni di un'unica variabile (chiamata Shadow feature) che sarà quella che si andrà a verificare se importante
-3)	vado poi a costruire un albero come modello su entrambi i dataset e vado a comparare le 2 accuratezze trovate. Nel caso in cui l’accuratezza non diminuisce significa che quella variabile non dava contributo nella classificazione e di conseguenza può essere rimossa.
-4)	Ripeto per ogni variabile 
+1. crea una copia del dataset iniziale
+2. va a permutare le osservazioni di un'unica variabile (chiamata Shadow feature) che sarà quella che si andrà a verificare se importante
+3. vado poi a costruire un albero come modello su entrambi i dataset e vado a comparare le 2 accuratezze trovate. Nel caso in cui l’accuratezza non diminuisce significa che quella variabile non dava contributo nella classificazione e di conseguenza può essere rimossa.
+4. Ripeto per ogni variabile 
 
 ![image](https://user-images.githubusercontent.com/85078090/221672157-1b9edc52-9100-45fb-ae72-9510ca853d20.png)
 
@@ -81,7 +81,6 @@ Preprocess: variabili non collineari, near zero variance e model selection
 ![image](https://user-images.githubusercontent.com/85078090/221672265-bc16470f-705a-4b2d-9966-f83e27eb59e9.png)
 
 ![image](https://user-images.githubusercontent.com/85078090/221672283-4c254496-0fbe-42d6-accd-52b51671500d.png)
-
 
 ![image](https://user-images.githubusercontent.com/85078090/221672293-6ab98fc1-c290-49e0-920a-01a8263895a8.png)
 
