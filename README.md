@@ -93,13 +93,17 @@ Come parametro di tuning abbiamo K = 23 (il numro di vicini), tunato dal modello
 ![image](https://user-images.githubusercontent.com/85078090/221676347-f1d23a36-c8b0-4162-b652-b17986997c6c.png)
 
 ![image](https://user-images.githubusercontent.com/85078090/221676535-ad96147d-d68b-40c2-8e05-e24d4758d172.png)
+
 ![image](https://user-images.githubusercontent.com/85078090/221676590-8e09f990-fcbc-4228-b87a-f17baad4c481.png)
 
 # **Gradient boosting**
 
 Parametro di tuning: numero di alberi (500) 
+
 ![image](https://user-images.githubusercontent.com/85078090/221676835-8497a7f7-bbf3-4287-a123-189313685b4e.png)
+
 ![image](https://user-images.githubusercontent.com/85078090/221676854-57316258-fe82-42b3-b678-82e1477a8c3f.png)
+
 ![image](https://user-images.githubusercontent.com/85078090/221676891-5fd5db77-1629-4894-9ad4-0e799f03e889.png)
 
 # **Random forest**
